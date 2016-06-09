@@ -3,50 +3,280 @@ window.onload = function() {
     var c = document.getElementById("main");
     window.ctx = c.getContext("2d"); // Dealing with a global context is easier
     
-    ship(100, 100);
-    
+    box(100, 100);
+    //planet(100, 100);
+    //ship(100, 100);
+    //satellite(100, 100);
+    //moon(100, 100);
+    //ufo(100, 100);
+    //satellite2(100, 100);
+    //star(100, 100);
+    junk(100, 100);
 }
 
+//Draws out a box for testing purposes
+function box(x, y){
+    ctx.translate(x + 25, y + 25);
+    ctx.strokeStyle = "#000000";
+    ctx.moveTo(-25, -25);
+    ctx.lineTo(25, -25);
+    ctx.lineTo(25, 25);
+    ctx.lineTo(-25, 25);
+    ctx.lineTo(-25, -25);
+    ctx.stroke();
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Draws a planet, Saturn
 function planet(x, y) {
-    ctx.translate(x, -y/2);
-    ctx.rotate(0.785);
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(Math.PI/8);
     ctx.beginPath();
     ctx.fillStyle = "#000000";
-    ctx.arc(x, y, 16, 0, 6.28, false);
+    ctx.arc(0, 0, 16, 0, 6.28, false);
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
     ctx.strokeStyle = "#7777ee";
     ctx.scale(2, 1);
-    ctx.arc(x/2, y, 12, 0, 6.28, false);
+    ctx.arc(0, 0, 12, 0, 6.28, false);
     ctx.stroke();
+    ctx.translate(- x - 25, - y - 25);
 }
 
+//Draws a spaceship
 function ship(x, y) {
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(Math.PI/4);
     ctx.fillStyle = "#585858";
-    ctx.fillRect(x, y, 20, 20);
+    ctx.fillRect(- 10, - 10, 20, 25);
     ctx.beginPath();
     ctx.strokeStyle = "#585858";
-    ctx.arc(x + 10, y, 10, 0, 6.28, false);
+    ctx.arc(0, - 12, 10, 0, 6.28, false);
     ctx.fill();
     ctx.stroke();
     ctx.beginPath();
     ctx.strokeStyle = "#585858";
-    ctx.moveTo(x, y + 20);
-    ctx.lineTo(x - 5, y + 20);
-    ctx.lineTo(x, y + 10);
+    ctx.moveTo(- 10, 15);
+    ctx.lineTo(- 15, 15);
+    ctx.lineTo(- 10, 0);
     ctx.fill();
     ctx.stroke();
-    ctx.moveTo(x + 20, y + 20);
-    ctx.lineTo(x + 25, y + 20);
-    ctx.lineTo(x + 20, y + 10);
+    ctx.moveTo(10, 15);
+    ctx.lineTo(15, 15);
+    ctx.lineTo(10, 0);
     ctx.fill();
     ctx.stroke();
-    ctx.fillRect(x + 3, y + 20, 5, 3);
-    ctx.fillRect(x + 12, y + 20, 5, 3);
+    ctx.fillRect(- 7, 15, 5, 3);
+    ctx.fillRect(2, 15, 5, 3);
+    ctx.translate(- x - 25, - y - 25);
 }
 
+//Draws a satellite version 1
 function satellite(x, y) {
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(5*Math.PI/4);
     ctx.fillStyle = "#000050";
     ctx.strokeStyle = "#000050";
+    ctx.fillRect(-20, -10, 14, 8);
+    ctx.fillRect(6, -10, 14, 8);
+    ctx.fillRect(-6, -7, 12, 3);
+    ctx.fillRect(-4, -13, 8, 15);
+    ctx.fillRect(-1, 2, 2, 5);
+    ctx.beginPath();
+    ctx.arc(0, 7, 3, 0, 2*Math.PI, false);
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 7, 6, 0, Math.PI, false);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 7, 9, 0, Math.PI, false);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 7, 12, 0, Math.PI, false);
+    ctx.stroke();
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Draws a quarter moon, note that if background color changes, this needs to be changed
+function moon(x, y) {
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(-Math.PI/4);
+    ctx.fillStyle = "#000000";
+    ctx.strokeStyle = "#000000";
+    ctx.beginPath();
+    ctx.arc(0, 0, 20, 0, 2*Math.PI, false);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#ffffff";
+    ctx.strokeStyle = "#ffffff";
+    ctx.beginPath();
+    ctx.arc(5, 0, 17, 0, 2*Math.PI, false);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = "#000000";
+    ctx.fillStyle = "#000000";
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Draws a ufo
+function ufo(x, y){
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(Math.PI/8);
+    ctx.beginPath();
+    ctx.scale(2, 1);
+    ctx.arc(0, 0, 10, 0, 2*Math.PI, false);
+    ctx.fill();
+    ctx.scale(1/2, 1);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.fillStyle = "#ffffff";
+    ctx.arc(0, -5, 10, 0, Math.PI, true);
+    ctx.fill();
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.scale(2, 1);
+    ctx.arc(0, -6, 5, 0, Math.PI, false);
+    ctx.fill();
+    ctx.stroke();
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Draws a satellite version 2
+function satellite2(x, y) {
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(3*Math.PI/4);
+    ctx.fillRect(-20, -11, 4, 4);
+    ctx.fillRect(-15, -11, 4, 4);
+    ctx.fillRect(-10, -11, 4, 4);
+    ctx.fillRect(-20, -6, 4, 4);
+    ctx.fillRect(-15, -6, 4, 4);
+    ctx.fillRect(-10, -6, 4, 4);
+    ctx.fillRect(-20, -1, 4, 4);
+    ctx.fillRect(-15, -1, 4, 4);
+    ctx.fillRect(-10, -1, 4, 4);
+    
+    ctx.fillRect(6, -11, 4, 4);
+    ctx.fillRect(11, -11, 4, 4);
+    ctx.fillRect(16, -11, 4, 4);
+    ctx.fillRect(6, -6, 4, 4);
+    ctx.fillRect(11, -6, 4, 4);
+    ctx.fillRect(16, -6, 4, 4);
+    ctx.fillRect(6, -1, 4, 4);
+    ctx.fillRect(11, -1, 4, 4);
+    ctx.fillRect(16, -1, 4, 4);
+    
+    ctx.fillRect(-4, -13, 8, 22);
+    ctx.fillRect(-2, 8, 4, 8);
+    
+    ctx.beginPath();
+    ctx.arc(0, 17, 3, 0, Math.PI, false);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(0, 17, 6, 0, Math.PI, false);
+    ctx.stroke();
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Draws a 4-pointed star
+function star(x, y) {
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(Math.PI/16);
+    ctx.beginPath();
+    ctx.moveTo(20, 0);
+    ctx.lineTo(5, 5);
+    ctx.lineTo(0, 20);
+    ctx.lineTo(-5, 5);
+    ctx.lineTo(-20, 0);
+    ctx.lineTo(-5, -5);
+    ctx.lineTo(0, -20);
+    ctx.lineTo(5, -5);
+    ctx.lineTo(20, 0);
+    ctx.fill();
+    ctx.stroke();
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Draws a refrigerator
+function junk(x, y) {
+    ctx.translate(x + 25, y + 25);
+    ctx.rotate(Math.PI/4);
+    ctx.fillRect(-10,-15, 20, 15);
+    ctx.fillRect(-10, 1, 20, 18);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(5, -10, 2, 5);
+    ctx.fillRect(5, 5, 2, 5);
+    ctx.fillStyle = "#000000";
+    ctx.translate(-x - 25, - y - 25);
+}
+
+//Changes the direction of objects if it touches the border
+function border_check(objx, objy, directx, directy){
+    if (objx - 25 <= 0 || objx + 25 >= 1000) {
+        directx = -directx;
+    }
+    if (objy - 25 <= 0 || objy + 25 >= 640) {
+        directy = -directy;
+    } 
+}
+
+//Checks if an object is within range of a black/purple/blue hole
+function hole_check(objx, objy, directx, directy, holex, holey) {
+    if (objx - 25 > holex && objx - 25 < holex && objy - 25 > holey && objy - 25 < holey) {
+        directx = (holex - objx)/25;
+        directy = (holey - objy)/25;
+    }
+    else if (objx - 25 > holex && objx - 25 < holex && objy + 25 > holey && objy + 25 < holey) {
+        directx = (holex - objx)/25;
+        directy = (holey - objy)/25;
+    }
+    else if (objx + 25 > holex && objx + 25 < holex && objy - 25 > holey && objy - 25 < holey) {
+        directx = (holex - objx)/25;
+        directy = (holey - objy)/25;
+    }
+    else if (objx + 25 > holex && objx + 25 < holex && objy + 25 > holey && objy + 25 < holey) {
+        directx = (holex - objx)/25;
+        directy = (holey - objy)/25;
+    }
+}
+
+//Creates an object
+function generate_object() {
+    var object = Math.floor(Math.random()*8);
+    var directionx = Math.floor(Math.random()*10) + 1;
+    var directiony = Math.floor(Math.random()*10) + 1;
+    var positionx = Math.floor(Math.random()*999) + 1;
+    var positiony = Math.floor(Math.random()*639) + 1;
+    if (object === 0) {
+        planet(positionx, positiony);
+    }
+    else if (object === 1) {
+        ship(positionx,positiony)
+;    }
+    else if (object === 2) {
+        satellite(positionx, positiony);
+    }
+    else if (object === 3) {
+        moon(positionx, positiony);
+    }
+    else if (object === 4) {
+        ufo(positionx, positiony);
+    }
+    else if (object === 5) {
+        satellite2(positionx, positiony);
+    }
+    else if (object === 6) {
+        star(positionx, positiony);
+    }
+    else if (object === 7) {
+        junk(positionx, positiony);
+    }
+}
+
+//For creating objects
+function base(x, y) {
+    ctx.translate(x + 25, y + 25);
+    //ctx.rotate(Math.PI/4);
+    ctx.translate(-x - 25, - y - 25);
 }
